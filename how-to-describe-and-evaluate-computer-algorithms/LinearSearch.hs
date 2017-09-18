@@ -1,13 +1,6 @@
 module LinearSearch(
-myElem,
 search
 ) where
-
-myElem :: (Eq a) => a -> [a] -> Bool
-myElem a [] = False
-myElem a (x:xs)
-     | a == x    = True
-     | otherwise = a `myElem` xs
 
 searchWithIndex :: (Eq a) => a -> [a] -> Int -> Int
 searchWithIndex a [] _ = -1
