@@ -37,3 +37,5 @@ Output: the value of n!.
 2. Otherwise, return n times the value returned by
 recursively calling FACTORIAL(n-1).
 ```
+
+Implemented in [Factorial.hs](Factorial.hs).
