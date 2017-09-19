@@ -18,3 +18,5 @@ delineate the subarray A[p..r] under consideration.
    D. Otherwise (A[q] < x), return
       RECURSIVE-BINARY-SEARCH(A, q+1, r, x).
 ```
+
+*n.b.* the very first algorithm in this chapter is an imperative version of binary search, using a loop, but since recursion is more idiomatic in haskell, using just this definition instead.
