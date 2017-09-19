@@ -23,3 +23,17 @@ index into the array, such any negative integer.
 The book defines two variants, <tt>BETTER-LINEAR-SEARCH</tt> and <tt>SENTINEL-LINEAR-SEARCH</tt> which assume imperative iterators.
 
 [LinearSearch.hs](LinearSearch.hs) implemented here is naturally recursive, and since it return the matching index once it is found, it is more accurately an implementation of the book's <tt>BETTER-LINEAR-SEARCH</tt> algorithm.
+
+## Factorial
+
+```
+Procedure FACTORIAL(n)
+
+Input: An integer n >= 0.
+
+Output: the value of n!.
+
+1. If n = 0, then return 1 as the output.
+2. Otherwise, return n times the value returned by
+recursively calling FACTORIAL(n-1).
+```
