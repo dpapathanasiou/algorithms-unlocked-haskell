@@ -4,7 +4,8 @@ search
 
 recursiveBinarySearch :: (Ord a) => [a] -> Int -> Int -> a -> Int
 recursiveBinarySearch a p r x
-                    | p > r       = -1
+                    | p > r           = -1
+                    | q >= (length a) = -1
                     | a !! q == x = q
                     | a !! q  > x = recursiveBinarySearch a p (q - 1) x
                     | otherwise   = recursiveBinarySearch a (q + 1) r x
