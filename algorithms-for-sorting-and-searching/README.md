@@ -22,3 +22,22 @@ delineate the subarray A[p..r] under consideration.
 *n.b.* the very first algorithm in this chapter is an imperative version of binary search, using a loop, but since recursion is more idiomatic in haskell, using just this definition instead.
 
 Implemented in [BinarySearch.hs](BinarySearch.hs).
+
+## Selection Sort
+
+```
+Procedure SELECTION-SORT(A, n)
+
+Inputs:
+  A: an array.
+  n: the number of elements in A to sort.
+
+Result: The elements of A are sorted into non-decreasing
+order.
+
+1. For i = 1 to n - 1:
+   A. Set smallest to i.
+   B. For j = i + 1 to n:
+      i. if A[j] < A[smallest], then set smallest to j.
+   C. Swap A[i] with A[smallest].
+```
