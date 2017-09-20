@@ -2,7 +2,7 @@ module BinarySearch (
 recursiveBinarySearch
 ) where
 
-recursiveBinarySearch :: (Eq a) => [a] -> Int -> Int -> a -> Int
+recursiveBinarySearch :: (Ord a) => [a] -> Int -> Int -> a -> Int
 recursiveBinarySearch a p r x
                     | p > r       = -1
                     | a !! q == x = q
