@@ -20,3 +20,5 @@ delineate the subarray A[p..r] under consideration.
 ```
 
 *n.b.* the very first algorithm in this chapter is an imperative version of binary search, using a loop, but since recursion is more idiomatic in haskell, using just this definition instead.
+
+Implemented in [BinarySearch.hs](BinarySearch.hs).
