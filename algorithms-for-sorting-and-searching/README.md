@@ -41,3 +41,5 @@ order.
       i. if A[j] < A[smallest], then set smallest to j.
    C. Swap A[i] with A[smallest].
 ```
+
+Implemented in [SelectionSort.hs](SelectionSort.hs).
