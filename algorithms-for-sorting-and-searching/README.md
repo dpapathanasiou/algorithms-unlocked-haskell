@@ -43,3 +43,18 @@ order.
 ```
 
 Implemented in [SelectionSort.hs](SelectionSort.hs).
+
+## Insertion Sort
+
+```
+Procedure INSERTION-SORT(A, n)
+
+Inputs and Outputs: Same as SELECTION-SORT.
+
+1. For i = 2 to n:
+   A. Set key to A[i], and set j to i - 1.
+   B. While j > 0 and A[j] > key, do the following:
+      i. Set A[j + 1] to A[j].
+     ii. Decrement j (i.e., set j to j - 1).
+   C. Set A[j + 1] to key.
+```
