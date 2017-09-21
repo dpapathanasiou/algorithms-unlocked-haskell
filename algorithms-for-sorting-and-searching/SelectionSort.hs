@@ -1,5 +1,5 @@
 module SelectionSort (
-selectionSort
+sort
 ) where
 
 swap :: (Ord a) => [a] -> Int -> Int -> [a]
@@ -20,3 +20,6 @@ selectionSort :: (Ord a) => [a] -> Int -> [a]
 selectionSort a i
              | i == (length a) = a
              | otherwise = selectionSort (swap a i (findSmallest a i (i + 1))) (i + 1)
+
+sort :: (Ord a) => [a] -> [a]
+sort a = selectionSort a 0
