@@ -58,3 +58,5 @@ Inputs and Outputs: Same as SELECTION-SORT.
      ii. Decrement j (i.e., set j to j - 1).
    C. Set A[j + 1] to key.
 ```
+
+Implemented in [InsertionSort.hs](InsertionSort.hs).
