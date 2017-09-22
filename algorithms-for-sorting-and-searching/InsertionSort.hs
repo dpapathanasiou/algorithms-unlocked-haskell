@@ -1,3 +1,7 @@
+module InsertionSort (
+sort
+) where
+
 replace :: (Ord a) => [a] -> Int -> a -> [a]
 replace a i x = let h = take i a
                     t = drop (i + 1) a
@@ -15,3 +19,8 @@ insertionSort a i
             | otherwise = let k = a !! i
                               (a', j) = decrementInner a (i - 1) k
                           in insertionSort (replace a' (j + 1) k) (i + 1)
+
+sort :: (Ord a) => [a] -> [a]
+sort a
+   | (length a) < 2 = a
+   | otherwise = insertionSort a 1
