@@ -60,3 +60,51 @@ Inputs and Outputs: Same as SELECTION-SORT.
 ```
 
 Implemented in [InsertionSort.hs](InsertionSort.hs).
+
+## Merge Sort
+
+```
+Procedure MERGE-SORT(A, p, r)
+
+Inputs:
+  A: an array.
+  p, r: starting and ending indices of a subarray of A.
+
+Result: The elements of the subarray A[p..r] are sorted
+into non-decreasing order.
+
+1. If p >= r, then the subarray A[p..r] has at most one
+   element, and so it is already sorted. Just return
+   without doing anything.
+2. Otherwise, do the following:
+   A. Set q to (p+r)/2.
+   B. Recursively call MERGE-SORT(A, p, q).
+   C. Recursively call MERGE-SORT(A, q+1, r).
+   D. Call MERGE(A, p, q, r).
+```
+
+which requires MERGE:
+
+```
+Procedure MERGE(A, p, q, r)
+
+Inputs:
+  A: an array.
+  p, q, r: indices into A. Each of the subarrays A[p..q]
+  and A[q+1..r] is assumed to be already sorted.
+
+Result: The subarray A[p..r] contains the elements originally in A[p..q] and A[q+1..r], but now the entire
+subarray A[p..r] is sorted.
+
+1. Set n1 to q-p+1, and set n2 to r-q.
+2. Let B[1..n1 + 1] and C[1..n2 + 1] be new arrays.
+3. Copy A[p..q] into B[1..n1], and copy A[q+1..r] into
+   C[1..n2].
+4. Set both B[n1+1] and C[n2+1] to infinity.
+5. Set both i and j to 1.
+6. For k = p to r:
+   A. If B[i] <= C[j], then set A[k] to B[i] and
+      increment i.
+   B. Otherwise (i.e., B[i] < C[j]), set A[k] to C[j] and
+      increment j.
+```
