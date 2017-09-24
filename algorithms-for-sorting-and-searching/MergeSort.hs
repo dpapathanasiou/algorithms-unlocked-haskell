@@ -1,6 +1,6 @@
 slice :: (Ord a) => [a] -> Int -> Int -> [a]
 slice a i j
-    | j > i = a
+    | i > j = a
     | otherwise = take (j - i + 1) (drop i a)
 
 merge' :: (Ord a) => [a] -> [a] -> [a] -> [a]
