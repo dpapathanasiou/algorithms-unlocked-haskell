@@ -110,3 +110,36 @@ subarray A[p..r] is sorted.
 ```
 
 Implemented in [MergeSort.hs](MergeSort.hs) without the explicit (p, q, r) parameters, since those are all idiomatically determinable by the property of the input array.
+
+## Quick Sort
+
+```
+Procedure QUICKSORT(A, p, r)
+
+Inputs and Result: Same as MERGE-SORT.
+
+1. If p >= r, then just return without doing anything.
+2. Otherwise, do the following:
+   A. Call PARTITION(A, p, r), and set q to its result.
+   B. Recursively call QUICKSORT(A, p, q-1).
+   C. Recursively call QUICKSORT(A, q+1, r).
+```
+
+which requires PARTITION:
+
+```
+Procedure PARTITION(A, p, r)
+
+Inputs: Same as MERGE-SORT.
+
+Result: Rearranges the elements of A[p..r] so that every
+element in A[p..q-1] is less than or equal to A[q] and
+every element in A[q+1..r] is greater than q. Returns
+the index of q to the caller.
+
+1. Set q to p.
+2. For u = p to r-1 do:
+   A. If A[u] <= A[r], then swap A[q] with A[u] and then
+      increment q.
+3. Swap A[q] with A[r] and then return q.
+```
