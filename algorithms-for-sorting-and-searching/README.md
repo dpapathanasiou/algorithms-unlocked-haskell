@@ -105,6 +105,6 @@ subarray A[p..r] is sorted.
 6. For k = p to r:
    A. If B[i] <= C[j], then set A[k] to B[i] and
       increment i.
-   B. Otherwise (i.e., B[i] < C[j]), set A[k] to C[j] and
+   B. Otherwise (i.e., B[i] > C[j]), set A[k] to C[j] and
       increment j.
 ```
