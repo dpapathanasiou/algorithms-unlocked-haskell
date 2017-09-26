@@ -143,3 +143,5 @@ the index of q to the caller.
       increment q.
 3. Swap A[q] with A[r] and then return q.
 ```
+
+Implemented in [QuickSort.hs](QuickSort.hs), again without the explicit (p, q, r) parameters, using a definition found in [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/recursion#quick-sort), which is a great illustration of how to implement something like PARTITION idiomatically.
