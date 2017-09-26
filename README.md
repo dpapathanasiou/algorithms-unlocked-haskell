@@ -6,3 +6,4 @@ This is an implementation of the algorithms described in [Algorithms Unlocked](h
 
 ## Chapters
 * [How to Describe and Evaluate Computer Algorithms](how-to-describe-and-evaluate-computer-algorithms/README.md)
+* [Algorithms for Sorting and Searching](algorithms-for-sorting-and-searching/README.md)
