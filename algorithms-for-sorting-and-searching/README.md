@@ -108,3 +108,5 @@ subarray A[p..r] is sorted.
    B. Otherwise (i.e., B[i] > C[j]), set A[k] to C[j] and
       increment j.
 ```
+
+Implemented in [MergeSort.hs](MergeSort.hs) without the explicit (p, q, r) parameters, since those are all idiomatically determinable by the property of the input array.
