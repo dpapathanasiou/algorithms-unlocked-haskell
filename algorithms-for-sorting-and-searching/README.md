@@ -93,7 +93,8 @@ Inputs:
   p, q, r: indices into A. Each of the subarrays A[p..q]
   and A[q+1..r] is assumed to be already sorted.
 
-Result: The subarray A[p..r] contains the elements originally in A[p..q] and A[q+1..r], but now the entire
+Result: The subarray A[p..r] contains the elements
+originally in A[p..q] and A[q+1..r], but now the entire
 subarray A[p..r] is sorted.
 
 1. Set n1 to q-p+1, and set n2 to r-q.
