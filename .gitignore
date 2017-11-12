@@ -1,9 +1,3 @@
-*~
-*.swp
-
-*.py
-*.pyc
-
 dist
 dist-*
 cabal-dev
