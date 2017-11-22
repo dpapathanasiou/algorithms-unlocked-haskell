@@ -1,3 +1,8 @@
+module TopologicalSort2D (
+makeGraph,
+sort
+) where
+
 import Data.Array
 
 isMatrix :: Num e => Array (Int, Int) e -> Bool
@@ -54,9 +59,9 @@ makeGraph dat = let m = (length dat) - 1
                     v = [col | row <- dat, col <- row]
                 in array ((0,0), (m,m)) [((i, j), (v !! ((i * (m + 1)) + j))) | i <- [0..m], j <- [0..m]]
 
-topologicalSort :: (Ord e, Num e) => Array (Int, Int) e -> Maybe [Int]
-topologicalSort graph
-              | isMatrix(graph) = let indegree = inDegree graph
-                                      next     = getNext indegree
-                                  in Just(buildLinearOrder graph indegree next [])
-              | otherwise = Nothing
+sort :: (Ord e, Num e) => Array (Int, Int) e -> Maybe [Int]
+sort graph
+   | isMatrix(graph) = let indegree = inDegree graph
+                           next     = getNext indegree
+                       in Just(buildLinearOrder graph indegree next [])
+   | otherwise = Nothing
