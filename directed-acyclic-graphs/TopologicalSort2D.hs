@@ -12,17 +12,17 @@ getRow :: Num e => Array (Int, Int) e -> Int -> [e]
 getRow graph row = [graph ! (row, j) | j <- [0..rows]]
        where rows = fst (snd (bounds graph))
 
-findMatches :: (Ord a, Num a) => (a -> Bool) -> [a] -> a -> [a] -> [a]
+findMatches :: (Ord a, Num a) => (a -> Bool) -> [a] -> Int -> [Int] -> [Int]
 findMatches _ [] _ x = x
 findMatches fn (h:t) i x
           | fn(h)     = findMatches fn t (i + 1) (x ++ [i])
           | otherwise = findMatches fn t (i + 1) x
 
-findZeros :: (Ord a, Num a) => [a] -> [a]
+findZeros :: (Ord a, Num a) => [a] -> [Int]
 findZeros a = let fn x = x == 0
               in findMatches fn a 0 []
 
-findOnes :: (Ord a, Num a) => [a] -> [a]
+findOnes :: (Ord a, Num a) => [a] -> [Int]
 findOnes a = let fn x = x == 1
              in findMatches fn a 0 []
 
