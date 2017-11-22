@@ -48,3 +48,31 @@ becomes u.
 1. If shortest[u] + weight(u, v) < shortest[v], then set shortest[v]
 to shortest[u] + weight(u, v) and set pred[v] to u.
 ```
+
+### Shortest Path
+
+```
+Procedure DAG-SHORTEST-PATHS(G, s)
+
+Inputs:
+
+  G: a weighted directed acyclic graph containing a set V of n vertices
+  and a set E of m directed edges.
+
+  s: a source vertex in V.
+
+Result: For each non-source vertex v in V, shortest[v] is the weight
+of sp(s, v) of a shortest path from s to v and pred[v] is the vertex
+preceding v on some shortest path.
+
+For the source vertex s, shortest[s] = 0 and pred[s] = NULL. If there
+is no path from s to v, then shortest[v] = ∞ and pred[v] = NULL.
+
+1. Call TOPOLOGICAL-SORT(G) and set l to be the linear order of vertices
+returned by the call.
+2. Set shortest[v] to ∞ for each vertex v except s, set shortest[s]
+to 0, and set pred[v] to NULL for each vertex v.
+3. For each vertex u, taken in the order given by l:
+   A. For each vertex v adjacent to u:
+      i. Call RELAX(u, v)
+```
