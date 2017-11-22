@@ -26,3 +26,9 @@ linear order if (u, v) is an edge in the graph.
      ii. If in-degree[v] = 0, then insert v into the next list.
 6. Return the linear order.
 ```
+
+[TopologicalSort2D.hs](TopologicalSort2D.hs) implements the graph as a two-dimensional array, or adjacency matrix, where each value is either zero or one, using [Data.Array](http://hackage.haskell.org/package/array/docs/Data-Array.html), as shown in [this example](https://lotz84.github.io/haskellbyexample/ex/arrays).
+
+Producing the in-degree array in steps 1 to 3 is achieved by taking a sum of all the columns in the matrix.
+
+Retrieving the list of adjacent nodes in step 5C is achieved by pulling the given node (row) from the matrix, and scanning it for non-zero values.
