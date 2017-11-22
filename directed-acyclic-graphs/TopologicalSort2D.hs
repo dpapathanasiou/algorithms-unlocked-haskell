@@ -42,12 +42,21 @@ updateInDegree :: (Ord a, Num a) => [a] -> [Int] -> [a]
 updateInDegree indegree [] = indegree
 updateInDegree indegree (h:t) = updateInDegree (decrementAt indegree h) t
 
+buildLinearOrder :: (Ord e, Num e) => Array (Int, Int) e -> [e] -> [Int] -> [Int] -> [Int]
+buildLinearOrder _ _ [] order = order
+buildLinearOrder graph indegree (h:t) order = let adjacents     = getAdjacents graph h
+                                                  updatedDegree = updateInDegree indegree adjacents
+                                                  nextAdditions = [i | i <- adjacents, updatedDegree !! i == 0]
+                                              in buildLinearOrder graph updatedDegree (t ++ nextAdditions) (order ++ [h])
+
 makeGraph :: Num e => [[e]] -> Array (Int, Int) e
 makeGraph dat = let m = (length dat) - 1
                     v = [col | row <- dat, col <- row]
                 in array ((0,0), (m,m)) [((i, j), (v !! ((i * (m + 1)) + j))) | i <- [0..m], j <- [0..m]]
 
-topologicalSort :: Num e => Array (Int, Int) e -> Maybe [e]
+topologicalSort :: (Ord e, Num e) => Array (Int, Int) e -> Maybe [Int]
 topologicalSort graph
-              | isMatrix(graph) = Just (inDegree(graph))
+              | isMatrix(graph) = let indegree = inDegree graph
+                                      next     = getNext indegree
+                                  in Just(buildLinearOrder graph indegree next [])
               | otherwise = Nothing
