@@ -34,3 +34,17 @@ So [TopologicalSort2D.hs](TopologicalSort2D.hs) implements the graph as a two-di
 Producing the in-degree array in steps 1 to 3 is achieved by taking a sum of all the columns in the matrix.
 
 Retrieving the list of adjacent nodes in step 5C is achieved by pulling the given node (row) from the matrix, and scanning it for non-zero values.
+
+## Relax
+
+```
+Procedure RELAX(u, v)
+
+Inputs: u, v: vertices such that there is an edge (u, v).
+
+Result: The value of shortest[v] might decrease, and if it does, pred[v]
+becomes u.
+
+1. If shortest[u] + weight(u, v) < shortest[v], then set shortest[v]
+to shortest[u] + weight(u, v) and set pred[v] to u.
+```
