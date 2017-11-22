@@ -23,19 +23,13 @@ findMatches fn (h:t) i x
           | fn(h)     = findMatches fn t (i + 1) (x ++ [i])
           | otherwise = findMatches fn t (i + 1) x
 
-findZeros :: (Ord a, Num a) => [a] -> [Int]
-findZeros a = let fn x = x == 0
-              in findMatches fn a 0 []
-
-findOnes :: (Ord a, Num a) => [a] -> [Int]
-findOnes a = let fn x = x == 1
-             in findMatches fn a 0 []
-
 getNext :: (Ord a, Num a) => [a] -> [Int]
-getNext indegree = findZeros indegree
+getNext indegree = let fn x = x == 0
+                   in findMatches fn indegree 0 []
 
 getAdjacents :: (Ord e, Num e) => Array (Int, Int) e -> Int -> [Int]
-getAdjacents graph i = findOnes (getRow graph i)
+getAdjacents graph i = let fn x = x == 1
+                      in findMatches fn (getRow graph i) 0 []
 
 decrementAt :: (Ord a, Num a) => [a] -> Int -> [a]
 decrementAt a i = let h = take i a
