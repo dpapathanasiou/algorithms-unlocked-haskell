@@ -13,7 +13,7 @@ getRow graph row = [graph ! (row, j) | j <- [0..rows]]
        where rows = fst (snd (bounds graph))
 
 findMatches :: (Ord a, Num a) => (a -> Bool) -> [a] -> a -> [a] -> [a]
-findMatches fn [] i x = x
+findMatches _ [] _ x = x
 findMatches fn (h:t) i x
           | fn(h)     = findMatches fn t (i + 1) (x ++ [i])
           | otherwise = findMatches fn t (i + 1) x
