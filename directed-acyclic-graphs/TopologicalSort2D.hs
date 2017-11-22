@@ -26,6 +26,12 @@ findOnes :: (Ord a, Num a) => [a] -> [Int]
 findOnes a = let fn x = x == 1
              in findMatches fn a 0 []
 
+getNext :: (Ord a, Num a) => [a] -> [Int]
+getNext indegree = findZeros indegree
+
+getAdjacents :: (Ord e, Num e) => Array (Int, Int) e -> Int -> [Int]
+getAdjacents graph i = findOnes (getRow graph i)
+
 makeGraph :: Num e => [[e]] -> Array (Int, Int) e
 makeGraph dat = let m = (length dat) - 1
                     v = [col | row <- dat, col <- row]
