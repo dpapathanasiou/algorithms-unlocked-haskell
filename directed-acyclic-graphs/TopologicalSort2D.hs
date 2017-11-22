@@ -32,6 +32,16 @@ getNext indegree = findZeros indegree
 getAdjacents :: (Ord e, Num e) => Array (Int, Int) e -> Int -> [Int]
 getAdjacents graph i = findOnes (getRow graph i)
 
+decrementAt :: (Ord a, Num a) => [a] -> Int -> [a]
+decrementAt a i = let h = take i a
+                      v = a !! i
+                      t = drop (i + 1) a
+                  in h ++ [(v - 1)] ++ t
+
+updateInDegree :: (Ord a, Num a) => [a] -> [Int] -> [a]
+updateInDegree indegree [] = indegree
+updateInDegree indegree (h:t) = updateInDegree (decrementAt indegree h) t
+
 makeGraph :: Num e => [[e]] -> Array (Int, Int) e
 makeGraph dat = let m = (length dat) - 1
                     v = [col | row <- dat, col <- row]
