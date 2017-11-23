@@ -5,10 +5,6 @@ sort
 
 import Data.Array
 
-isMatrix :: Num e => Array (Int, Int) e -> Bool
-isMatrix graph = (fst dim) == (snd dim)
-         where dim = snd (bounds graph)
-
 inDegree :: Num e => Array (Int, Int) e -> [e]
 inDegree graph = [sum [graph ! (i, j) | i <- [0..cols]] | j <- [0..cols]]
          where cols = snd (snd (bounds graph))
@@ -48,14 +44,17 @@ buildLinearOrder graph indegree (h:t) order = let adjacents     = getAdjacents g
                                                   nextAdditions = [i | i <- adjacents, updatedDegree !! i == 0]
                                               in buildLinearOrder graph updatedDegree (t ++ nextAdditions) (order ++ [h])
 
-makeGraph :: Num e => [[e]] -> Array (Int, Int) e
-makeGraph dat = let m = (length dat) - 1
-                    v = [col | row <- dat, col <- row]
-                in array ((0,0), (m,m)) [((i, j), (v !! ((i * (m + 1)) + j))) | i <- [0..m], j <- [0..m]]
+isMatrix :: Num e => [[e]] -> Bool
+isMatrix (h:t) = length (h:t) == length(h)
 
-sort :: (Ord e, Num e) => Array (Int, Int) e -> Maybe [Int]
-sort graph
-   | isMatrix(graph) = let indegree = inDegree graph
-                           next     = getNext indegree
-                       in Just(buildLinearOrder graph indegree next [])
-   | otherwise = Nothing
+makeGraph :: Num e => [[e]] -> Maybe(Array (Int, Int) e)
+makeGraph dat
+        | isMatrix(dat) = let m = (length dat) - 1
+                              v = [col | row <- dat, col <- row]
+                          in Just (array ((0,0), (m,m)) [((i, j), (v !! ((i * (m + 1)) + j))) | i <- [0..m], j <- [0..m]])
+        | otherwise = Nothing
+
+sort :: (Ord e, Num e) => Array (Int, Int) e -> [Int]
+sort graph = let indegree = inDegree graph
+                 next     = getNext indegree
+             in buildLinearOrder graph indegree next []
