@@ -35,6 +35,29 @@ Producing the in-degree array in steps 1 to 3 is achieved by taking a sum of all
 
 Retrieving the list of adjacent nodes in step 5C is achieved by pulling the given node (row) from the matrix, and scanning it for non-zero values.
 
+### Testing
+
+The unit tests use [Test.HUnit](https://hackage.haskell.org/package/HUnit) which can be installed using [cabal](https://www.haskell.org/cabal/).
+
+To run the tests, load [TopologicalSort2DTest.hs](TopologicalSort2DTest.hs) inside the GHCi repl:
+
+```
+Prelude> :l TopologicalSort2DTest
+[1 of 2] Compiling TopologicalSort2D ( TopologicalSort2D.hs, interpreted )
+[2 of 2] Compiling Main             ( TopologicalSort2DTest.hs, interpreted )
+Ok, modules loaded: TopologicalSort2D, Main.
+```
+
+Then use the <tt>runTestTT</tt> command like this:
+
+```
+*Main> runTestTT unitTests
+Cases: 2  Tried: 2  Errors: 0  Failures: 0
+Counts {cases = 2, tried = 2, errors = 0, failures = 0}
+```
+
+The <tt>unitTests</tt> list can be expanded to include additional scenarios.
+
 ## Relax
 
 ```
